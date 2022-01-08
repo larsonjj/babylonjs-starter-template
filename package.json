@@ -1,27 +1,38 @@
 {
   "name": "vite_vanillajs_template",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "dev": "npx vite",
+    "build": "npx tsc && npx vite build",
+    "preview": "npx vite preview",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
+    "prettier": "npx prettier --ignore-path .gitignore \"**/*.+(js|json|ts|tsx|css|scss)\"",
+    "check-types": "tsc",
+    "check-format": "npm run prettier -- --list-different",
+    "format": "npm run prettier -- --write",
+    "validate": "npm run check-types && npm run check-format && npm run lint"
   },
   "devDependencies": {
-    "typescript": "^4.4.4",
-    "vite": "^2.7.2",
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
+    "eslint": "^8.6.0",
     "husky": "^7.0.4",
+    "lint-staged": "^12.1.7",
     "prettier": "^2.5.1",
-    "lint-staged": "^12.1.7"
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2"
   },
   "dependencies": {
-    "babylonjs": "^5.0.0-alpha.61",
-    "babylonjs-gui": "^5.0.0-alpha.61",
-    "babylonjs-loaders": "^5.0.0-alpha.61"
+    "babylonjs": "^5.0.0-beta.2",
+    "babylonjs-gui": "^5.0.0-beta.2",
+    "babylonjs-loaders": "^5.0.0-beta.2"
   },
   "lint-staged": {
-    "src/**/*.ts": [
-      "prettier --single-quote --write",
-      "git add"
+    "src/**/*.+(js|json|ts|tsx|css|scss)": [
+      "npx prettier --write"
     ]
+  },
+  "hooks": {
+    "pre-commit": "lint-staged"
   }
 }
