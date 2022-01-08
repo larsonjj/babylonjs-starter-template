@@ -1,0 +1,27 @@
+{
+  "name": "vite_vanillajs_template",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2",
+    "husky": "^7.0.4",
+    "prettier": "^2.5.1",
+    "lint-staged": "^12.1.7"
+  },
+  "dependencies": {
+    "babylonjs": "^5.0.0-alpha.61",
+    "babylonjs-gui": "^5.0.0-alpha.61",
+    "babylonjs-loaders": "^5.0.0-alpha.61"
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  }
+}
